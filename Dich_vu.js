@@ -28,7 +28,7 @@ var Dich_vu = Note_Dich_Vu.createServer((Yeu_cau, Dap_ung) => {
                 })
 
             })
-//
+
         } else if (url == "/Danh_sach_ph") {
             let collection = "DANH_SACH_PH"
             client.connect(uri => {
@@ -45,18 +45,8 @@ var Dich_vu = Note_Dich_Vu.createServer((Yeu_cau, Dap_ung) => {
             })
 
         }else if (url.match("\.png$")) {
-            var imagePath = `images2/${url}`;
             if (fs.existsSync(imagePath)) {
-                let fileStream = fs.createReadStream(imagePath);
-                Dap_ung.writeHead(200, { "Content-Type": "image/png" });
                 fileStream.pipe(Dap_ung);
-            } else {
-                var imagePath = `images2/user_login.png`;
-                let fileStream = fs.createReadStream(imagePath);
-                Dap_ung.writeHead(200, { "Content-Type": "image/png" });
-                fileStream.pipe(Dap_ung);
-            }
-        }else if (url.match("\.png&phonghoc$")) {
             var imagePath = `images2/${url}`;
             if (fs.existsSync(imagePath)) {
                 let fileStream = fs.createReadStream(imagePath);
